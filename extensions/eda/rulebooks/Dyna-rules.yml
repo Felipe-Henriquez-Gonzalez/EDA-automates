@@ -1,0 +1,33 @@
+- name: Dynatrace 
+  hosts: all
+  sources:
+    - name: dynatrace Saas
+      dynatrace.event_driven_ansible.dt_esa_api:
+        dt_api_host: "{{ eda_host }}"
+        dt_api_token: "{{ eda_token }}"
+        delay: "{{ eda_delay }}"
+  rules:
+    - name: Dynatrace - Remediacion 01
+      condition: event.title == "alert-remediacion-01"
+      actions:
+        - debug:
+
+        - run_workflow_template:
+            name: "WF - Autoremediacion 01"
+            organization: "Default"
+            job_args:
+              extra_vars:
+                dynatrace_event_id: "{{ event.problemId }}"
+                dynatrace_event_title: "{{ event.title }}"
+
+
+    - name: Dynatrace - Remediacion 02
+      condition: event.title == "another-alert-02"
+      action:
+        run_workflow_template:
+          name: "WF - Autoremediacion 02"
+          organization: "Default"
+          job_args:
+            extra_vars:
+              dynatrace_event_id: "{{ event.problemId }}"
+              dynatrace_event_title: "{{ event.title }}" 
