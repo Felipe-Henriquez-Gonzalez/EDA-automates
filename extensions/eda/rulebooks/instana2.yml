@@ -1,0 +1,22 @@
+---
+- name: Listen for events on a webhook
+  hosts: all
+
+  sources:
+    - instana_webhook:
+        host: 0.0.0.0
+        port: 6000
+
+     ## Define the conditions we are looking for
+
+  rules:
+    - name: Test
+      condition: event.payload.message == "Node failed"
+      action:
+        run_job_template:
+        name: "Demo Job Template"
+    - name: Event
+      condition: event.payload.problem.problemText == "Erroneous call rate is too high"
+      action:
+        run_job_template:
+        name: "Demo Job Template"
