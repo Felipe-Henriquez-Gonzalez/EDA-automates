@@ -11,8 +11,6 @@
     - name: Dynatrace - Remediacion 01
       condition: event.title == "alert-remediacion-01"
       actions:
-        - debug:
-
         - run_workflow_template:
             name: "WF - Autoremediacion 01"
             organization: "Default"
