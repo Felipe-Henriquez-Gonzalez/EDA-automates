@@ -5,7 +5,8 @@
       dynatrace.event_driven_ansible.dt_esa_api:
         dt_api_host: "{{ eda_host }}"
         dt_api_token: "{{ eda_token }}"
-        delay: "{{ eda_delay }}"
+        delay: 60
+#        delay: "{{ eda_delay }}"
   rules:
     - name: Dynatrace - Remediacion 01
       condition: event.title == "alert-remediacion-01"
