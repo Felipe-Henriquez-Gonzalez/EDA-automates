@@ -7,12 +7,12 @@
         delay: 120
 #        delay: "{{ eda_delay }}"
   rules:
-#    - name: Dynatrace - Remediacion 01
-#      condition: event.title == "alert-remediacion-01"
-#      actions:
-#        - run_workflow_template:
-#            name: "WF - Autoremediacion 01"
-#            organization: "Default"
+    - name: Dynatrace - Remediacion 01
+      condition: event.title == "alert-remediacion-01"
+      actions:
+        - run_job_template:
+            name: "Demo Job Template"
+            organization: "Default"
 #            job_args:
 #              extra_vars:
 #                dynatrace_event_id: "{{ event.problemId }}"
