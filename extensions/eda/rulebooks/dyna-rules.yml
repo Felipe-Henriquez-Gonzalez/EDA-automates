@@ -2,9 +2,9 @@
   hosts: all
   sources:
     - dynatrace.event_driven_ansible.dt_esa_api:
-        dt_api_host: "{{ eda_host }}"
-        dt_api_token: "{{ eda_token }}"
-        delay: 120
+        dt_api_host: "{{ dyna_host }}" #url tenant Dynatrace
+        dt_api_token: "{{ dyna_token }}" #Token Dynatrace
+        delay: 60
 #        delay: "{{ eda_delay }}"
   rules:
     - name: Dynatrace - Remediacion 01
