@@ -1,5 +1,5 @@
 ---
-- name: Instalar Nginx 
+- name: iniciar Nginx 
   hosts: "{{server_hostname}}"
   become: true
 
