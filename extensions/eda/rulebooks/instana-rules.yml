@@ -10,13 +10,9 @@
      ## Define the conditions we are looking for
 
   rules:
-    - name: Test
+    - name: instana Test
       condition: event.payload.message == "node failed"
       action:
         run_job_template:
-        name: "Demo Job Template"
-    - name: Event
-      condition: event.payload.problem.problemText == "Erroneous call rate is too high"
-      action:
-        run_job_template:
-        name: "Demo Job Template"
+          name: "Demo job template instana"
+          organization: "Default"
