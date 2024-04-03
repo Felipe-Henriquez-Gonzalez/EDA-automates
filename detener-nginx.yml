@@ -1,0 +1,11 @@
+---
+- name: Instalar Nginx 
+  hosts: "{{server_hostname}}"
+  become: true
+
+  tasks:
+
+    - name: Habilitar y iniciar el servicio Nginx
+      systemd:
+        name: nginx
+        state: stopped
