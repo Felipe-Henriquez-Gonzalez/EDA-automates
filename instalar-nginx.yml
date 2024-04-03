@@ -1,0 +1,17 @@
+---
+- name: Instalar Nginx en RHEL/CentOS
+  hosts: {{server_hostname}}
+  become: true
+
+  tasks:
+    - name: Instalar Nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Habilitar y iniciar el servicio Nginx
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
+  
