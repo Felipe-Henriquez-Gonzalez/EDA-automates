@@ -1,0 +1,33 @@
+---
+- name: create namespace & set resource quotas
+  hosts: localhost
+  gather_facts: no
+  vars:
+    ns: "{{ namespace }}"
+    requests_cpu: '2'
+    limits_cpu: '3'
+    requests_memory: '5Gi'
+    limits_memory: '10Gi'
+
+  tasks:
+   - name: Create namespace
+     kubernetes.core.k8s:
+      name: "{{ ns }}"
+      api_version: v1
+      kind: Namespace
+      state: present
+    
+    - name: Set resource quotas
+      kubernetes.core.k8s:
+        api_version: v1
+        kind: ResourceQuota
+        namespace: "{{ ns }}"
+        name: resource-quota
+        state: present
+        definition:
+          spec:
+            hard:
+              "limits.cpu": "{{ limits_cpu }}"
+              "limits.memory": "{{ limits_memory }}"
+              "requests.cpu": "{{ requests_cpu }}"
+              "requests.memory": "{{ requests_memory }}"
