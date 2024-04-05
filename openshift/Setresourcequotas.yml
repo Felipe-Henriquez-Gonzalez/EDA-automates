@@ -5,9 +5,9 @@
   vars:
     ns: automates2024
     requests_cpu: '2'
-    limits_cpu: '3'
+    limits_cpu: '8'
     requests_memory: '5Gi'
-    limits_memory: '10Gi'
+    limits_memory: '20Gi'
 
   tasks:
     - name: Set resource quotas
