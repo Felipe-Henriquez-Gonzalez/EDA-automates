@@ -16,5 +16,5 @@
           - event.payload.State == "OPEN"
       action:
         run_job_template:
-          name: "Demo Job Template"
+          name: "setquotas"
           organization: "Default"
