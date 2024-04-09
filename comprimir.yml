@@ -4,17 +4,10 @@
   become: true
   gather_facts: false
   vars:
-    directorio_a_comprimir: "/var/www/html/uploads"  # Reemplaza con la ruta al directorio que quieres comprimir
-    nombre_archivo_comprimido: "/var/www/html/uploads/contenido.tar.gz"  # Nombre del archivo comprimido
 
   tasks:
     - name: Comprimir contenido del directorio en tar.gz
-      command: "tar -cvzf /var/www/html/contenido.tar.gz /var/www/html/uploads"
+      command: "tar -cvzf /var/www/html/contenido$( date '+%Y-%m-%d_%H-%M-%S' ).tar.gz /var/www/html/uploads"
 
     - name: Borrar archivos originales
-      file:
-        path: "{{ directorio_a_comprimir }}/{{ item }}"
-        state: absent
-      with_fileglob:
-        - "{{ directorio_a_comprimir }}/*"
-      when: item != nombre_archivo_comprimido
+      command: "rm -rf /var/www/html/uploads/*"
