@@ -4,7 +4,7 @@
   gather_facts: false
   vars:
     directorio_a_comprimir: "/var/www/html/uploads"  # Reemplaza con la ruta al directorio que quieres comprimir
-    nombre_archivo_comprimido: "/var/www/html/contenido.tar.gz"  # Nombre del archivo comprimido
+    nombre_archivo_comprimido: "/var/www/html/uploads/contenido.tar.gz"  # Nombre del archivo comprimido
 
   tasks:
     - name: Comprimir contenido del directorio en tar.gz
