@@ -4,12 +4,14 @@
   become: true
 
   tasks:
-    - name: Comprimir contenido del directorio en tar.gz
-      command: "tar -cvzf /var/www/html/contenido.tar.gz /var/www/html/uploads"
+#    - name: Comprimir contenido del directorio en tar.gz
+#      command: "tar -cvzf /var/www/html/contenido.tar.gz /var/www/html/uploads"
+      
     - name: remove web dir contents 
       file: 
         path: /var/www/html/uploads/*
         state: absent
+        
     - name: iniciar el servicio Nginx
       systemd:
         name: nginx
