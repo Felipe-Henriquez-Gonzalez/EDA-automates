@@ -11,5 +11,5 @@
 
     - name: Crear archivos de logs
       command: "dd if=/dev/zero of=/var/www/html/uploads/file{{ item }}.log bs=1024 count=102400"
-      loop: "{{ range(1, 201) | list }}"
+      loop: "{{ range(1, 20) | list }}"
       
