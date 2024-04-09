@@ -8,7 +8,7 @@
 
   tasks:
     - name: Comprimir contenido del directorio en tar.gz
-      command: tar -cvzf "{{ nombre_archivo_comprimido }}" "{{ directorio_a_comprimir }}"
+      command: "tar -cvzf /var/www/html/contenido.tar.gz /var/www/html/uploads"
 
     - name: Borrar archivos originales
       file:
