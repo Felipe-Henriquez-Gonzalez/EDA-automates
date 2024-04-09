@@ -10,4 +10,4 @@
       command: "tar -cvzf /var/www/html/contenido.tar.gz /var/www/html/uploads"
 
     - name: Borrar archivos originales
-      command: "rm -rf /var/www/html/uploads/*"
+      command: "rm -rf /var/www/html/uploads/*.log"
