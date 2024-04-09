@@ -18,12 +18,3 @@
         run_job_template:
           name: "setquotas"
           organization: "Default"
-
-    - name: Prueba Ansible Automates Buenos Aires 2024
-      condition: 
-        all:
-          - event.payload.State == "OPEN"
-      action:
-        run_job_template:
-          name: "hola mundo"
-          organization: "Default"
