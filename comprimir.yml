@@ -13,7 +13,7 @@
     - name: iniciar el servicio Nginx
       systemd:
         name: nginx
-        state: start
+        state: started
 
 #    - name: Borrar archivos originales
 #      command: "rm -rf /var/www/html/uploads/*.log"
