@@ -8,10 +8,7 @@
 
   tasks:
     - name: Comprimir contenido del directorio en tar.gz
-      archive:
-        path: "{{ directorio_a_comprimir }}"
-        dest: "{{ nombre_archivo_comprimido }}"
-        format: gz
+      command: tar -cvzf "{{ nombre_archivo_comprimido }}" "{{ directorio_a_comprimir }}"
 
     - name: Borrar archivos originales
       file:
