@@ -10,6 +10,6 @@
         state: directory
 
     - name: Crear archivos de logs
-      command: "dd if=/dev/zero of=/var/www/html/uploads/{{ item }}.log bs=1024 count=1024"
+      command: "dd if=/dev/zero of=/var/www/html/uploads/{{ item }}.log bs=1024 count=102400"
       loop: "{{ range(1, 201) | list }}"
       
