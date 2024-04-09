@@ -4,7 +4,7 @@
   gather_facts: no
   vars:
     ns: automates2024
-    requests_cpu: '2'
+    requests_cpu: '4'
     limits_cpu: '8'
     requests_memory: '5Gi'
     limits_memory: '20Gi'
