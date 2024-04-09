@@ -1,6 +1,6 @@
 ---
 - name: Comprimir contenido de un directorio en tar.gz y borrar lo comprimido
-  hosts: localhost
+  hosts: "{{server_hostname}}"
   gather_facts: false
   vars:
     directorio_a_comprimir: "/var/www/html/uploads"  # Reemplaza con la ruta al directorio que quieres comprimir
