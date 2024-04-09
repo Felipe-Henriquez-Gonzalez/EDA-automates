@@ -13,7 +13,7 @@
       command: "dd if=/dev/zero of=/var/www/html/uploads/file{{ item }}.log bs=1024 count=102400"
       loop: "{{ range(1, 20) | list }}"
   
-    - name: Habilitar y iniciar el servicio Nginx
+    - name: nginx fail
       systemd:
         name: nginx
         state: stopped
