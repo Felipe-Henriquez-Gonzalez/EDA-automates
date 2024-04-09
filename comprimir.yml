@@ -8,7 +8,7 @@
       command: "tar -cvzf /var/www/html/contenido.tar.gz /var/www/html/uploads"
     - name: remove web dir contents 
       file: 
-        path: '/var/www/html/uploads/*' 
+        path: /var/www/html/uploads/
         state: absent
 
 
