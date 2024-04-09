@@ -1,0 +1,15 @@
+---
+- name: Crear archivos de 100 MB
+  hosts: "{{server_hostname}}"
+  become: true
+  gather_facts: false
+  tasks:
+    - name: Crear directorio si no existe
+      file:
+        path: "/var/www/html/uploads/"
+        state: directory
+
+    - name: Crear archivos de logs
+      command: "dd if=/dev/zero of=/var/www/html/uploads/{{ item }}.log"
+      loop: "{{ range(1, 201) | list }}"
+      
