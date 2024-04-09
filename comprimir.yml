@@ -2,8 +2,6 @@
 - name: Comprimir contenido de un directorio en tar.gz y borrar lo comprimido
   hosts: "{{server_hostname}}"
   become: true
-  gather_facts: false
-  vars:
 
   tasks:
     - name: Comprimir contenido del directorio en tar.gz
