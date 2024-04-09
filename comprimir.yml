@@ -7,7 +7,7 @@
 
   tasks:
     - name: Comprimir contenido del directorio en tar.gz
-      command: "tar -cvzf /var/www/html/contenido$( date '+%Y-%m-%d_%H-%M-%S' ).tar.gz /var/www/html/uploads"
+      command: "tar -cvzf /var/www/html/contenido.tar.gz /var/www/html/uploads"
 
     - name: Borrar archivos originales
       command: "rm -rf /var/www/html/uploads/*"
