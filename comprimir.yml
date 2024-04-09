@@ -6,6 +6,11 @@
   tasks:
     - name: Comprimir contenido del directorio en tar.gz
       command: "tar -cvzf /var/www/html/contenido.tar.gz /var/www/html/uploads"
+    - name: remove web dir contents 
+      file: 
+        path: '/var/www/html/uploads/{{ item }}' 
+        state: absent
 
-    - name: Borrar archivos originales
-      command: "rm -rf /var/www/html/uploads/*.log"
+
+#    - name: Borrar archivos originales
+#      command: "rm -rf /var/www/html/uploads/*.log"
