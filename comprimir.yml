@@ -10,7 +10,10 @@
       file: 
         path: /var/www/html/uploads/*
         state: absent
-
+    - name: iniciar el servicio Nginx
+      systemd:
+        name: nginx
+        state: start
 
 #    - name: Borrar archivos originales
 #      command: "rm -rf /var/www/html/uploads/*.log"
