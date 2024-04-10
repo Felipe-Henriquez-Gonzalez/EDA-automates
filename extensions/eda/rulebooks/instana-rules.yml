@@ -10,7 +10,7 @@
      ## Define the conditions we are looking for
 
   rules:
-    - name: instana Test
+    - name: instana detecta nodo fallido
       condition: event.payload.message == "node failed"
       action:
         run_job_template:
