@@ -1,0 +1,25 @@
+---
+- name: Listen for events on a webhook
+  hosts: all
+
+  ## Define a webhook as source
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 7000
+
+ ## Define rules with conditions and actions
+  rules:
+    - name: Rulebook Webhook from Opsgenie
+      condition: event.payload.source == "opsgenie"
+      action:
+        run_job_template:
+          name: jt-og-wh7000
+          organization: Default
+
+    - name: Rulebook Webhook from Datadog
+      condition: event.payload.source == "datadog"
+      action:
+        run_job_template:
+          name: jt-dd-wh7000
+          organization: Default
