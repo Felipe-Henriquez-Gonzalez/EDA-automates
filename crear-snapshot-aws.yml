@@ -5,6 +5,7 @@
     - name: take snapshot
       amazon.aws.ec2_snapshot:
         instance_id: "{{ _instance_id_ }}"
+        device_name: /dev/xvda
         region: "{{ _region_ }}"
         wait: false
         snapshot_tags:
