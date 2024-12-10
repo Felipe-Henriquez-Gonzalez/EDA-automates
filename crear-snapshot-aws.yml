@@ -1,35 +1,11 @@
 ---
-- name: Crear snapshot de un volumen de AWS
-  hosts: localhost
-  gather_facts: no
-  vars:
-    aws_region: "{{ _region }}"  # Cambia a tu región
-    instance_id: "{{ _instance_id }}"  # ID de la instancia EC2
-    snapshot_description: "Snapshot creado con Ansible"
-
+- name: take snapshot of VM
+  hosts: all
   tasks:
-    - name: Obtener información sobre los volúmenes de la instancia
-      aws_ec2_instance_info:
-        region: "{{ aws_region }}"
-        instance_ids: [ "{{ instance_id }}" ]
-      register: instance_info
-
-    - name: Extraer ID del volumen del dispositivo raíz
-      set_fact:
-        volume_id: "{{ instance_info.instances[0].block_device_mappings[0].ebs.volume_id }}"
-
-    - name: Crear un snapshot del volumen
-      ec2_vol:
-        region: "{{ aws_region }}"
-        volume_id: "{{ volume_id }}"
-        snapshot: yes
+    - name: take snapshot
+      amazon.aws.ec2_snapshot:
+        instance_id: "{{ _instance_id_ }}"
+        region: "{{ _region_ }}"
+        wait: false
         snapshot_tags:
-          Name: "Snapshot-{{ instance_id }}"
-          Description: "{{ snapshot_description }}"
-      register: snapshot_info
-
-    - name: Mostrar detalles del snapshot creado
-      debug:
-        msg:
-          - "Snapshot ID: {{ snapshot_info.snapshot_id }}"
-          - "Estado del Snapshot: {{ snapshot_info.state }}"
+          Name: snapshot_of_vm
