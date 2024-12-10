@@ -1,6 +1,6 @@
 ---
 - name: take snapshot of VM
-  hosts: "{{ _host_ }}"
+  hosts: localhost 
   tasks:
     - name: take snapshot
       amazon.aws.ec2_snapshot:
